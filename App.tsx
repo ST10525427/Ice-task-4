@@ -309,15 +309,15 @@ export default function App() {
             key={weather.city}
             style={[
               styles.cityButton,
-              selectedCity === weather.country &&
+              selectedCity === weather.city &&
                 styles.selectedCityButton,
             ]}
-            onPress={() => setSelectedCity(weather.country)}
+            onPress={() => setSelectedCity(weather.city)}
           >
             <Text
               style={[
                 styles.cityButtonText,
-                selectedCity === weather.country &&
+                selectedCity === weather.city &&
                   styles.selectedCityButtonText,
               ]}
             >
@@ -328,7 +328,7 @@ export default function App() {
       </View>
 
       <ImageBackground
-        source={selectedWeather.backgroundImage}
+        source={{ uri:selectedWeather.backgroundImage}}
         style={styles.weatherHero}
         imageStyle={styles.weatherHeroImage}
       >
@@ -348,11 +348,11 @@ export default function App() {
       <View style={styles.currentDetails}>
         <WeatherDetail
           label="Feels Like"
-          value={`${selectedWeather.feelsLike}°`}
+          value={`${selectedWeather.humidity}°`}
         />
         <WeatherDetail
           label="Humidity"
-          value={`${selectedWeather.feelsLike}%`}
+          value={`${selectedWeather.humidity}%`}
         />
         <WeatherDetail
           label="Wind"
@@ -385,7 +385,7 @@ export default function App() {
               <Text style={styles.hourTime}>{hour.time}</Text>
               <Text style={styles.forecastIcon}>{hour.icon}</Text>
               <Text style={styles.hourTemperature}>
-                {selectedWeather.temperature}°
+                {hour.temperature}°
               </Text>
             </View>
           ))}
@@ -396,7 +396,7 @@ export default function App() {
         <Text style={styles.sectionTitle}>5 Day Forecast</Text>
 
         <View style={styles.dailyContainer}>
-          {selectedWeather.daily.map((day) => {
+          {selectedWeather.daily.map((day) => (
             <View key={day.day} style={styles.dailyCard}>
               <Text style={styles.dayName}>{day.day}</Text>
               <Text style={styles.dailyIcon}>{day.icon}</Text>
@@ -407,8 +407,8 @@ export default function App() {
               </View>
 
               <Text style={styles.conditionText}>{day.condition}</Text>
-            </View>;
-          })}
+            </View>
+          ))}
         </View>
       </View>
 
