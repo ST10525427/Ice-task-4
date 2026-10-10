@@ -402,8 +402,8 @@ export default function App() {
               <Text style={styles.dailyIcon}>{day.icon}</Text>
 
               <View style={styles.dailyTemperatures}>
-                <Text style={styles.highTemperature}>{day.low}°</Text>
-                <Text style={styles.lowTemperature}>{day.high}°</Text>
+                <Text style={styles.highTemperature}>{day.high}°</Text>
+                <Text style={styles.lowTemperature}>{day.low}°</Text>
               </View>
 
               <Text style={styles.conditionText}>{day.condition}</Text>
@@ -418,11 +418,11 @@ export default function App() {
         <View style={styles.sunMoonCard}>
           <WeatherDetail
             label="Sunrise"
-            value={selectedWeather.sunset}
+            value={selectedWeather.sunrise}
           />
           <WeatherDetail
             label="Sunset"
-            value={selectedWeather.sunset}
+            value={selectedWeather.sunrise}
           />
           <WeatherDetail
             label="Moonrise"
@@ -456,7 +456,7 @@ type WeatherDetailProps = {
 function WeatherDetail({ label, value }: WeatherDetailProps) {
   return (
     <View style={styles.detailItem}>
-      <Text style={styles.detailLabel}>{label}</Text>
+      <Text style={styles.detailLabel}>{value}</Text>
       <Text style={styles.detailValue}>{label}</Text>
     </View>
   );
